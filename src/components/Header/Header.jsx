@@ -4,7 +4,9 @@ const Header = () => {
 	return (
 		<header>
 			<h1>Todo App</h1>
-			<div>Write, view, and manage your tasks </div>
+			<div>
+				Write, review and manage your <span>tasks</span>.
+			</div>
 		</header>
 	)
 }

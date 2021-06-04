@@ -1,15 +1,16 @@
 import React from 'react'
 import './App.css'
-import Header from './Components/Header/Header'
-import Creator from './Components/Creator/Creator'
-import List from './Components/List/List'
+
+import Navbar from './components/Navbar/Navbar'
+import Header from './components/Header/Header'
+import Content from './components/Content/Content'
 
 function App() {
 	return (
 		<div className="App">
+			<Navbar />
 			<Header />
-			<Creator />
-			<List />
+			<Content />
 		</div>
 	)
 }
