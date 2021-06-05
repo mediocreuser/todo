@@ -7,10 +7,12 @@ const CHANGE_TASK = 'todo-app/CHANGE_TASK'
 const REMOVE_TASK = 'todo-app/REMOVE_TASK'
 const SET_COUNT = 'todo-app/SET_COUNT'
 const REVERSE = 'todo-app/REVERSE'
+const SET_THEME = 'todo-app/SET_THEME'
 
 const initialState = {
 	tasks: storage.getTasks(),
 	count: storage.getCount(),
+	theme: storage.getTheme(),
 }
 
 const reducer = (state = initialState, action) => {
@@ -71,6 +73,9 @@ const reducer = (state = initialState, action) => {
 				tasks: [...state.tasks.reverse()],
 			}
 
+		case SET_THEME:
+			return { ...state, theme: action.theme }
+
 		default:
 			return state
 	}
@@ -94,6 +99,11 @@ const changeTaskStatusAC = (id) => ({ type: CHANGE_TASK_STATUS, id })
 const changeTaskAC = (text, id) => ({ type: CHANGE_TASK, text, id })
 
 export const reverse = () => ({ type: REVERSE })
+
+const setThemeAC = (theme) => ({
+	type: SET_THEME,
+	theme,
+})
 
 // Thunks
 export const addTask = (text) => (dispatch, getState) => {
@@ -134,6 +144,11 @@ export const removeTask = (id) => (dispatch, getState) => {
 	dispatch(setCountAC())
 
 	storage.setData(getState())
+}
+
+export const setTheme = (theme) => (dispatch) => {
+	dispatch(setThemeAC(theme))
+	storage.setTheme(theme)
 }
 
 export default reducer

@@ -1,84 +1,77 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { changeTask, changeTaskStatus, removeTask } from '../../redux/reducer'
+
+import Status from './Status'
+import Editor from './Editor'
+import Controls from './Controls'
+
+import styled from 'styled-components'
+import Date from './Date'
 
 const Task = React.memo(({ task }) => {
-	const dispatch = useDispatch()
-
 	const [editMode, setEditMode] = useState(false)
 
-	const [disabledChange, setDisabledChange] = useState(false)
-	const [doneDisabled, setDoneDisabled] = useState(false)
-
-	const [value, setValue] = useState(task.text)
-
-	const onChangeInput = (event) => {
-		const text = event.target.value
-		setValue(text)
-
-		if (text.trim().length === 0) {
-			setDoneDisabled(true)
-		} else {
-			setDoneDisabled(false)
-		}
-	}
-
-	const onSubmitForm = (event) => {
-		event.preventDefault()
-
-		if (value.trim().length !== 0) {
-			dispatch(changeTask(value, task.id))
-			setEditMode(false)
-			setDisabledChange(false)
-		}
-	}
-
-	const onCancel = () => {
-		setValue(task.text)
-		setEditMode(false)
-		setDisabledChange(false)
-		setDoneDisabled(false)
-	}
-
 	return (
-		<li
-			style={{
-				border: '1px solid black',
-				margin: '20px auto',
-				padding: 15,
-				width: 300,
-			}}
-		>
-			{editMode && (
-				<>
-					<form onSubmit={onSubmitForm}>
-						<input type="text" autoFocus value={value} onChange={onChangeInput} />
-						<button disabled={doneDisabled}>done</button>
-					</form>
-					<button onClick={onCancel}>cancel</button>
-				</>
-			)}
-			{!editMode && <div>{task.text}</div>}
-			<div>{task.date}</div>
-			<div>
-				<button
-					disabled={disabledChange}
-					onClick={() => {
-						setEditMode(true)
-						setDisabledChange(true)
-					}}
-				>
-					Change
-				</button>
-				<button onClick={() => dispatch(removeTask(task.id))}>Remove</button>
-				<input
-					type="checkbox"
-					checked={task.done}
-					onChange={() => dispatch(changeTaskStatus(task.id))}
-				/>
+		<TaskContainer done={task.done}>
+			<div className="wrapper">
+				<div className="body">
+					{!editMode && (
+						<div className="content">
+							<Status id={task.id} completed={task.done} />
+							<div>{task.text}</div>
+						</div>
+					)}
+					{editMode && <Editor setEditMode={setEditMode} id={task.id} text={task.text} />}
+				</div>
+				<Date date={task.date} />
 			</div>
-		</li>
+			<Controls setEditMode={setEditMode} id={task.id} />
+		</TaskContainer>
 	)
 })
+
+const TaskContainer = styled.li`
+	margin: 0 auto 30px;
+	position: relative;
+	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
+
+	display: flex;
+	width: 100%;
+	max-width: 500px;
+
+	button {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+	}
+
+	.wrapper {
+		background-color: ${({ theme }) => theme.task};
+		width: 100%;
+		padding: 20px;
+		border: 1px solid ${({ theme }) => theme.border};
+		border-radius: 10px;
+		margin: 0 auto;
+	}
+
+	.body {
+		display: flex;
+		align-items: center;
+
+		min-height: 20px;
+
+		.btn {
+			font-size: 20px;
+			user-select: none;
+
+			transition: opacity 0.1s;
+		}
+	}
+
+	.content {
+		display: flex;
+		align-items: center;
+		text-align: left;
+	}
+`
 
 export default Task
