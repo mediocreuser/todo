@@ -24,12 +24,21 @@ const ControlsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 	height: 100%;
 
 	position: absolute;
-	right: -35px;
 	top: 50%;
+	right: -9%;
 	transform: translateY(-50%);
+
+	@media (min-width: 576px) {
+		right: -9%;
+	}
+
+	@media (min-width: 768px) {
+		right: -35px;
+	}
 
 	.btn {
 		color: ${({ theme }) => theme.taskGray};

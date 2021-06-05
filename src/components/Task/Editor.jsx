@@ -10,12 +10,6 @@ const Editor = ({ setEditMode, id, text }) => {
 
 	const [doneDisabled, setDoneDisabled] = useState(false)
 
-	const onCancel = () => {
-		setValue(value)
-		setEditMode(false)
-		setDoneDisabled(false)
-	}
-
 	const onSubmitForm = (event) => {
 		event.preventDefault()
 
@@ -28,16 +22,28 @@ const Editor = ({ setEditMode, id, text }) => {
 	const onChangeInput = (event) => {
 		const text = event.target.value
 
-		if (text.trim().length === 0) {
-			setDoneDisabled(true)
-			setValue('')
-		} else {
-			setDoneDisabled(false)
-			setValue(text)
-		}
+		setDoneDisabled(!text.trim().length)
+		setValue(text)
 	}
 
 	const onKeyUpInput = (event) => setEditMode(event.code !== 'Escape')
+
+	const onBlurInput = (event) => {
+		const text = event.target.value
+
+		if (text.length !== 0) {
+			dispatch(changeTask(value, id))
+			setValue(text)
+		}
+
+		setEditMode(false)
+	}
+
+	const onCancel = () => {
+		setValue(value)
+		setEditMode(false)
+		setDoneDisabled(false)
+	}
 
 	return (
 		<EditorContainer>
@@ -48,6 +54,7 @@ const Editor = ({ setEditMode, id, text }) => {
 					value={value}
 					onChange={onChangeInput}
 					onKeyUp={onKeyUpInput}
+					onBlur={onBlurInput}
 				/>
 				<button disabled={doneDisabled}>
 					<span className="material-icons-round btn btn-done">done</span>

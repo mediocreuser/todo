@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+
 import { reverse } from '../../redux/reducer'
-import Task from '../Task/Task'
 import { useDispatch } from 'react-redux'
+
+import Task from '../Task/Task'
+import styled from 'styled-components'
 
 const List = ({ tasks, value }) => {
 	const dispatch = useDispatch()
@@ -18,7 +21,7 @@ const List = ({ tasks, value }) => {
 				{' | '}
 				<button onClick={() => dispatch(reverse())}>reverse</button>
 			</div>
-			<ul>
+			<ListContainer>
 				{tasks
 					.filter((task) => task.text.toUpperCase().includes(value.toUpperCase()))
 					.filter((task) => {
@@ -34,9 +37,19 @@ const List = ({ tasks, value }) => {
 					.map((task) => (
 						<Task key={task.id} task={task} />
 					))}
-			</ul>
+			</ListContainer>
 		</div>
 	)
 }
+
+const ListContainer = styled.ul`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	@media (min-width: 768px) {
+		align-items: center;
+	}
+`
 
 export default List

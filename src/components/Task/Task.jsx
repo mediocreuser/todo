@@ -3,15 +3,15 @@ import React, { useState } from 'react'
 import Status from './Status'
 import Editor from './Editor'
 import Controls from './Controls'
+import Date from './Date'
 
 import styled from 'styled-components'
-import Date from './Date'
 
 const Task = React.memo(({ task }) => {
 	const [editMode, setEditMode] = useState(false)
 
 	return (
-		<TaskContainer done={task.done}>
+		<TaskContainer done={task.done} editMode={editMode}>
 			<div className="wrapper">
 				<div className="body">
 					{!editMode && (
@@ -30,13 +30,24 @@ const Task = React.memo(({ task }) => {
 })
 
 const TaskContainer = styled.li`
-	margin: 0 auto 30px;
 	position: relative;
-	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
 
 	display: flex;
-	width: 100%;
-	max-width: 500px;
+	margin-bottom: 30px;
+
+	width: 90%;
+
+	@media (min-width: 576px) {
+		width: 100%;
+		max-width: 90%;
+	}
+
+	@media (min-width: 768px) {
+		width: 100%;
+		max-width: 535px;
+	}
+
+	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
 
 	button {
 		background-color: transparent;
@@ -45,10 +56,13 @@ const TaskContainer = styled.li`
 	}
 
 	.wrapper {
-		background-color: ${({ theme }) => theme.task};
+		background-color: ${(props) =>
+			props.editMode ? 'transparent' : ({ theme }) => theme.task};
 		width: 100%;
 		padding: 20px;
-		border: 1px solid ${({ theme }) => theme.border};
+		border: 1px solid
+			${(props) =>
+				props.editMode ? ({ theme }) => theme.yellow : ({ theme }) => theme.border};
 		border-radius: 10px;
 		margin: 0 auto;
 	}

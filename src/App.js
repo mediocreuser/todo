@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components'
 
 import { GlobalStyles } from './theme/global'
 import { lightTheme, darkTheme } from './theme/theme'
-// import styled from 'styled-components'
 
 import Navbar from './components/Navbar/Navbar'
 import Header from './components/Header/Header'
@@ -26,7 +25,5 @@ function App() {
 		</ThemeProvider>
 	)
 }
-
-// const Container = styled.div``
 
 export default App

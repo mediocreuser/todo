@@ -7,11 +7,11 @@ const Date = ({ date }) => {
 }
 
 const DateContainer = styled.div`
-	padding-left: 35px;
-	padding-top: 5px;
-	text-align: left;
+	padding: 5px 0 0 35px;
+
 	font-size: 12px;
 	color: ${({ theme }) => theme.taskGray};
+	text-align: left;
 `
 
 export default Date
