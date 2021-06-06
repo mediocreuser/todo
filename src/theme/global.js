@@ -18,9 +18,10 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   body {
-    height: 100vh;
     margin: 0;
     padding: 0;
+    
+    height: 100vh;
     
     text-align: center;
     
@@ -56,7 +57,7 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
 	  max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 0 15px;
   }
   
   .btn {

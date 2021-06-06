@@ -13,6 +13,7 @@ export const lightTheme = {
 	translucentText: 'rgba(36,41,46,0.3)',
 	logo: '#cdd9e5',
 	border: '#e1e4e8',
+	arrow: '#e1e4e8',
 
 	// Task
 	task: 'transparent',
@@ -35,6 +36,7 @@ export const darkTheme = {
 
 	logo: '#cdd9e5',
 	border: '#2d333b',
+	arrow: '#586069',
 
 	// Task
 	task: '#2d333b',
