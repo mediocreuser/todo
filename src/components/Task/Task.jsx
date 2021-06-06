@@ -72,13 +72,6 @@ const TaskContainer = styled.li`
 		align-items: center;
 
 		min-height: 20px;
-
-		.btn {
-			font-size: 20px;
-			user-select: none;
-
-			transition: opacity 0.1s;
-		}
 	}
 
 	.content {

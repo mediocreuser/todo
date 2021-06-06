@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
 
-import { reverse } from '../../redux/reducer'
-import { useDispatch } from 'react-redux'
-
+import Tabs from './Tabs'
 import Task from '../Task/Task'
+
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const List = ({ tasks, value }) => {
-	const dispatch = useDispatch()
-	const [activeTab, setActiveTab] = useState('')
+	const tab = useSelector(({ tab }) => tab)
 
-	const onChangeCategory = (event) => setActiveTab(event.target.textContent)
+	const [activeTab, setActiveTab] = useState(tab)
 
 	return (
 		<div>
-			<div>
-				<button onClick={onChangeCategory}>All</button>
-				<button onClick={onChangeCategory}>Done</button>
-				<button onClick={onChangeCategory}>Actual</button>
-				{' | '}
-				<button onClick={() => dispatch(reverse())}>reverse</button>
-			</div>
+			<Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 			<ListContainer>
 				{tasks
 					.filter((task) => task.text.toUpperCase().includes(value.toUpperCase()))
@@ -46,6 +39,8 @@ const ListContainer = styled.ul`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+
+	padding-top: 30px;
 
 	@media (min-width: 768px) {
 		align-items: center;

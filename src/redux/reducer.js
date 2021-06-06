@@ -8,11 +8,13 @@ const REMOVE_TASK = 'todo-app/REMOVE_TASK'
 const SET_COUNT = 'todo-app/SET_COUNT'
 const REVERSE = 'todo-app/REVERSE'
 const SET_THEME = 'todo-app/SET_THEME'
+const SET_TAB = 'todo-app/SET_TAB'
 
 const initialState = {
 	tasks: storage.getTasks(),
 	count: storage.getCount(),
 	theme: storage.getTheme(),
+	tab: storage.getTab(),
 }
 
 const reducer = (state = initialState, action) => {
@@ -76,21 +78,18 @@ const reducer = (state = initialState, action) => {
 		case SET_THEME:
 			return { ...state, theme: action.theme }
 
+		case SET_TAB:
+			return { ...state, tab: action.tab }
+
 		default:
 			return state
 	}
 }
 
 // Action Creators
-const addTaskAC = (task) => ({
-	type: ADD_TASK,
-	task,
-})
+const addTaskAC = (task) => ({ type: ADD_TASK, task })
 
-const removeTaskAC = (id) => ({
-	type: REMOVE_TASK,
-	id,
-})
+const removeTaskAC = (id) => ({ type: REMOVE_TASK, id })
 
 const setCountAC = () => ({ type: SET_COUNT })
 
@@ -100,10 +99,9 @@ const changeTaskAC = (text, id) => ({ type: CHANGE_TASK, text, id })
 
 export const reverse = () => ({ type: REVERSE })
 
-const setThemeAC = (theme) => ({
-	type: SET_THEME,
-	theme,
-})
+const setThemeAC = (theme) => ({ type: SET_THEME, theme })
+
+const setTabAC = (tab) => ({ type: SET_TAB, tab })
 
 // Thunks
 export const addTask = (text) => (dispatch, getState) => {
@@ -149,6 +147,13 @@ export const removeTask = (id) => (dispatch, getState) => {
 export const setTheme = (theme) => (dispatch) => {
 	dispatch(setThemeAC(theme))
 	storage.setTheme(theme)
+}
+
+export const setTab = (tab) => (dispatch, getState) => {
+	if (tab === getState().tab) return
+
+	dispatch(setTabAC(tab))
+	storage.setTab(getState())
 }
 
 export default reducer

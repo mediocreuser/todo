@@ -2,6 +2,7 @@ export const lightTheme = {
 	// colors
 	green: '#bbecc9',
 	lightGreen: '#34d058',
+	transparentLightGreen: 'rgba(52,208,88,0.5)',
 	red: '#92242e',
 	lightRed: '#dc3545',
 	yellow: '#ffc107',
@@ -22,6 +23,7 @@ export const darkTheme = {
 	// colors
 	green: '#2d543c',
 	lightGreen: '#3fb950',
+	transparentLightGreen: 'rgba(63,185,80,0.5)',
 	red: '#92242e',
 	lightRed: '#dc3545',
 	yellow: '#ffc107',

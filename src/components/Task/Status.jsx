@@ -8,9 +8,19 @@ import styled from 'styled-components'
 const Status = ({ id, completed }) => {
 	const dispatch = useDispatch()
 
+	const onKeyPressLabel = (event) => {
+		if (event.code === 'Space' || event.code === 'Enter') {
+			dispatch(changeTaskStatus(id))
+		}
+	}
+
 	return (
 		<StatusContainer>
-			<label className={completed ? 'active' : null}>
+			<label
+				className={completed ? 'active' : null}
+				tabIndex="0"
+				onKeyPress={onKeyPressLabel}
+			>
 				<span className="material-icons-round btn btn-done">done</span>
 				<input
 					type="checkbox"
@@ -39,11 +49,6 @@ const StatusContainer = styled.div`
 
 		transition: border-color 0.1s, background-color 0.1s;
 
-		&:hover {
-			border-color: ${({ theme }) => theme.lightGreen};
-			background-color: transparent;
-		}
-
 		&.active {
 			border-color: ${({ theme }) => theme.lightGreen};
 			background-color: ${({ theme }) => theme.lightGreen};
@@ -61,6 +66,18 @@ const StatusContainer = styled.div`
 			left: 50%;
 			top: 50%;
 			transform: translate(-50%, -50%);
+		}
+
+		@media (min-width: 768px) {
+			&:hover {
+				border-color: ${({ theme }) => theme.lightGreen};
+				background-color: transparent;
+			}
+
+			&.active:hover {
+				border-color: ${({ theme }) => theme.green};
+				background-color: ${({ theme }) => theme.green};
+			}
 		}
 
 		input {

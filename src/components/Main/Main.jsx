@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import Input from '../Input/Input'
 import List from '../List/List'
+import CounterMessage from './CounterMessage'
 
 const Main = () => {
 	const count = useSelector(({ count }) => count)
@@ -15,7 +16,7 @@ const Main = () => {
 	return (
 		<main>
 			<Input count={count} provideCurrentValue={provideCurrentValue} />
-			<div>{count ? `You have ${count} tasks` : "You don't have tasks yet."}</div>
+			<CounterMessage count={count} />
 			{!!count && <List tasks={tasks} value={inputValue} />}
 		</main>
 	)

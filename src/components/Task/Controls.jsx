@@ -39,21 +39,6 @@ const ControlsContainer = styled.div`
 	@media (min-width: 768px) {
 		right: -35px;
 	}
-
-	.btn {
-		color: ${({ theme }) => theme.taskGray};
-
-		&:hover,
-		&:active {
-			&.btn-delete {
-				color: ${({ theme }) => theme.lightRed};
-			}
-
-			&.btn-edit {
-				color: ${({ theme }) => theme.yellow};
-			}
-		}
-	}
 `
 
 export default Controls

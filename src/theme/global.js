@@ -11,8 +11,6 @@ WebFont.load({
 export const GlobalStyles = createGlobalStyle`
   ${reset}
   
-  h1{font-size:  30px;}
-  
   *,
   *::after,
   *::before {
@@ -42,12 +40,9 @@ export const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
   
-  ul {
-    margin-top: 30px;
-  }
-  
   h1 {
-  font-family: 'JetBrains Mono', sans-serif;
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: 30px;
   }
   
   .App {
@@ -64,23 +59,44 @@ export const GlobalStyles = createGlobalStyle`
     padding: 15px;
   }
   
-  .btn-close {
-    color: ${({ theme }) => theme.lightRed};
-  }
+  .btn {
+    user-select: none;
+    transition: opacity 0.1s;
+    color: ${({ theme }) => theme.taskGray};
     
-  .btn-done {
-    color: ${({ theme }) => theme.lightGreen};
-  }
+    &:hover,
+    &:active {
+      &.btn-delete {
+      color: ${({ theme }) => theme.lightRed};
+      }
+
+      &.btn-edit {
+      color: ${({ theme }) => theme.yellow};
+      }
+    }
     
-  .btn-edit {
-    color: ${({ theme }) => theme.yellow};
-  }
+    &-done {
+      color: ${({ theme }) => theme.lightGreen};
+      
+      @media (min-width: 768px) {
+        color: ${({ theme }) => theme.green};
     
-  .btn-delete {
-    color: ${({ theme }) => theme.red};
-    
-    &:hover {
-    color: ${({ theme }) => theme.lightRed};
+        &:hover {
+          color: ${({ theme }) => theme.lightGreen};
+        }
+      }
+    }
+
+    &-close {
+      color: ${({ theme }) => theme.lightRed};
+      
+      @media (min-width: 768px) {
+            color: ${({ theme }) => theme.red};
+      
+      &:hover {
+        color: ${({ theme }) => theme.lightRed};
+      }
+      }
     }
   }
 `

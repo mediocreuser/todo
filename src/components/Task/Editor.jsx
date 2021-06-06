@@ -99,21 +99,5 @@ const EditorContainer = styled.div`
 			}
 		}
 	}
-
-	.btn-done {
-		color: ${({ theme }) => theme.green};
-
-		&:hover {
-			color: ${({ theme }) => theme.lightGreen};
-		}
-	}
-
-	.btn-close {
-		color: ${({ theme }) => theme.red};
-
-		&:hover {
-			color: ${({ theme }) => theme.lightRed};
-		}
-	}
 `
 export default Editor
