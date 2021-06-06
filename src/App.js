@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import { useSelector } from 'react-redux'
+import styled from 'styled-components'
 
 function App() {
 	const theme = useSelector(({ theme }) => theme)
@@ -15,15 +16,22 @@ function App() {
 	return (
 		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
-			<div className="App">
+			<div>
 				<Navbar />
-				<div className="container">
+				<Container>
 					<Header />
 					<Main />
-				</div>
+				</Container>
 			</div>
 		</ThemeProvider>
 	)
 }
+
+const Container = styled.div`
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+`
 
 export default App

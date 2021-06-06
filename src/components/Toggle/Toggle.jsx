@@ -14,6 +14,11 @@ const Toggle = () => {
 }
 
 const Button = styled.button`
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+
 	background: ${({ theme }) => theme.gradient};
 	border-radius: 5px;
 	cursor: pointer;

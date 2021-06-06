@@ -30,6 +30,9 @@ const HeaderContainer = styled.header`
 
 const Title = styled.h1`
 	padding: 20px;
+
+	font-family: 'Share Tech Mono', sans-serif;
+	font-size: 50px;
 `
 
 export default Header

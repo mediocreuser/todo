@@ -39,24 +39,15 @@ export const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
   
-  h1 {
-    font-family: 'Share Tech Mono', sans-serif;
-    font-size: 50px;
-  }
-  
-  .App {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .container {
-    width: 100%;
-	  max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
+  	button {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+				font-family: inherit;
+		font-size: inherit;
+		color: inherit;
+	}
   
   .btn {
     user-select: none;
@@ -99,7 +90,7 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   
-  	@keyframes scaleIn {
+  @keyframes scaleIn {
 		from {
 			max-height: 106px;
 			opacity: 1;

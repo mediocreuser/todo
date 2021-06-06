@@ -12,18 +12,18 @@ const Task = React.memo(({ task }) => {
 
 	return (
 		<TaskContainer done={task.done} editMode={editMode}>
-			<div className="wrapper">
-				<div className="body">
+			<Wrapper>
+				<Body>
 					{!editMode && (
-						<div className="content">
+						<Content>
 							<Status id={task.id} completed={task.done} />
 							<div>{task.text}</div>
-						</div>
+						</Content>
 					)}
 					{editMode && <Editor setEditMode={setEditMode} id={task.id} text={task.text} />}
-				</div>
+				</Body>
 				<Date date={task.date} />
-			</div>
+			</Wrapper>
 			<Controls editMode={editMode} setEditMode={setEditMode} id={task.id} />
 		</TaskContainer>
 	)
@@ -37,6 +37,8 @@ const TaskContainer = styled.li`
 
 	width: 90%;
 
+	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
+
 	@media (min-width: 576px) {
 		width: 100%;
 		max-width: 90%;
@@ -46,39 +48,34 @@ const TaskContainer = styled.li`
 		width: 100%;
 		max-width: 535px;
 	}
+`
 
-	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
+const Wrapper = styled.div`
+	margin: 0 auto;
+	width: 100%;
+	padding: 20px;
 
-	button {
-		background-color: transparent;
-		border: none;
-		padding: 0;
-	}
+	border-radius: 10px;
 
-	.wrapper {
-		background-color: ${(props) =>
-			props.editMode ? 'transparent' : ({ theme }) => theme.task};
-		width: 100%;
-		padding: 20px;
-		border: 1px solid
-			${(props) =>
-				props.editMode ? ({ theme }) => theme.yellow : ({ theme }) => theme.border};
-		border-radius: 10px;
-		margin: 0 auto;
-	}
+	background-color: ${(props) =>
+		props.editMode ? 'transparent' : ({ theme }) => theme.task};
 
-	.body {
-		display: flex;
-		align-items: center;
+	border: 1px solid
+		${(props) =>
+			props.editMode ? ({ theme }) => theme.yellow : ({ theme }) => theme.border};
+`
 
-		min-height: 20px;
-	}
+const Body = styled.div`
+	display: flex;
+	align-items: center;
 
-	.content {
-		display: flex;
-		align-items: center;
-		text-align: left;
-	}
+	min-height: 20px;
+`
+
+const Content = styled.div`
+	display: flex;
+	align-items: center;
+	text-align: left;
 `
 
 export default Task

@@ -8,9 +8,13 @@ const Navbar = () => {
 	return (
 		<Container>
 			<Wrapper>
-				<a href="https://github.com/mediocreuser/todo" target={'_blank'} rel="noreferrer">
+				<Link
+					href="https://github.com/mediocreuser/todo"
+					target={'_blank'}
+					rel="noreferrer"
+				>
 					<GithubLogo />
-				</a>
+				</Link>
 				<Toggle />
 			</Wrapper>
 		</Container>
@@ -26,24 +30,22 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
+	position: relative;
+
 	margin: 0 auto;
-	max-width: 1200px;
+	max-width: 800px;
+`
 
-	a {
-		display: inline-block;
+const Link = styled.a`
+	display: inline-block;
 
-		svg {
-			fill: ${({ theme }) => theme.logo};
-			width: 40px;
-			height: 40px;
-		}
-
-		&:hover svg {
-			opacity: 70%;
-		}
+	svg {
+		fill: ${({ theme }) => theme.logo};
+		width: 40px;
+		height: 40px;
 	}
 
-	button {
-		float: right;
+	&:hover svg {
+		opacity: 70%;
 	}
 `

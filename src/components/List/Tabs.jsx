@@ -15,27 +15,27 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 
 	return (
 		<TabsContainer>
-			<button
+			<Button
 				onClick={onChangeCategory}
 				className={activeTab === 'All' ? 'active' : null}
 			>
 				All
-			</button>
-			<button
+			</Button>
+			<Button
 				onClick={onChangeCategory}
 				className={activeTab === 'Done' ? 'active' : null}
 			>
 				Done
-			</button>
-			<button
+			</Button>
+			<Button
 				onClick={onChangeCategory}
 				className={activeTab === 'Actual' ? 'active' : null}
 			>
 				Actual
-			</button>
-			<button className="reverse" onClick={() => dispatch(reverse())}>
+			</Button>
+			<Button className="reverse" onClick={() => dispatch(reverse())}>
 				<span className="material-icons-round btn btn-reverse">import_export</span>
-			</button>
+			</Button>
 		</TabsContainer>
 	)
 }
@@ -48,41 +48,33 @@ const TabsContainer = styled.div`
 
 	width: 100%;
 	max-width: 250px;
+`
 
-	button {
-		padding: 0 10px;
+const Button = styled.button`
+	padding: 0 10px;
 
-		font-family: inherit;
-		font-size: inherit;
-		color: inherit;
+	&:active > span {
+		color: ${({ theme }) => theme.lightGreen};
+	}
 
-		background: none;
-		border: none;
-		cursor: pointer;
+	@media (min-width: 768px) {
+		&:hover,
+		&:hover > span {
+			color: ${({ theme }) => theme.transparentLightGreen};
+		}
 
+		&:active,
 		&:active > span {
-			color: ${({ theme }) => theme.lightGreen};
-		}
-
-		@media (min-width: 768px) {
-			&:hover,
-			&:hover > span {
-				color: ${({ theme }) => theme.transparentLightGreen};
-			}
-
-			&:active,
-			&:active > span {
-				color: ${({ theme }) => theme.lightGreen};
-			}
-		}
-
-		&.active,
-		&.active:hover {
 			color: ${({ theme }) => theme.lightGreen};
 		}
 	}
 
-	.reverse {
+	&.active,
+	&.active:hover {
+		color: ${({ theme }) => theme.lightGreen};
+	}
+
+	&.reverse {
 		position: absolute;
 		bottom: -50%;
 		transform: translateY(-50%);
