@@ -5,11 +5,11 @@ import { removeTask } from '../../redux/reducer'
 
 import styled from 'styled-components'
 
-const Controls = ({ setEditMode, id }) => {
+const Controls = ({ setEditMode, id, editMode }) => {
 	const dispatch = useDispatch()
 
 	return (
-		<ControlsContainer>
+		<ControlsContainer editMode={editMode}>
 			<button onClick={() => setEditMode(true)}>
 				<span className="material-icons btn btn-edit">edit_note</span>
 			</button>
@@ -21,6 +21,10 @@ const Controls = ({ setEditMode, id }) => {
 }
 
 const ControlsContainer = styled.div`
+	.btn-edit {
+		color: ${({ editMode, theme }) => editMode && theme.yellow};
+	}
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

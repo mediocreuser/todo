@@ -1,19 +1,35 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+	const count = useSelector(({ count }) => count)
+
 	return (
-		<header>
-			<h1>Todo App</h1>
+		<HeaderContainer count={count}>
+			<Title>Todo App</Title>
 			<div>
-				Write, review and manage your <Span>tasks</Span>.
+				Write, review and manage your <span>tasks</span>.
 			</div>
-		</header>
+		</HeaderContainer>
 	)
 }
 
-const Span = styled.span`
-	color: ${({ theme }) => theme.lightGreen};
+const HeaderContainer = styled.header`
+	overflow: hidden;
+
+	${({ count }) =>
+		!count
+			? `animation: scaleOut 0.5s ease-out forwards;`
+			: `animation: scaleIn 0.5s ease-out forwards;`}
+
+	span {
+		color: ${({ theme }) => theme.lightGreen};
+	}
+`
+
+const Title = styled.h1`
+	padding: 20px;
 `
 
 export default Header

@@ -24,7 +24,7 @@ const Task = React.memo(({ task }) => {
 				</div>
 				<Date date={task.date} />
 			</div>
-			<Controls setEditMode={setEditMode} id={task.id} />
+			<Controls editMode={editMode} setEditMode={setEditMode} id={task.id} />
 		</TaskContainer>
 	)
 })

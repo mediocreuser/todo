@@ -4,7 +4,7 @@ import WebFont from 'webfontloader'
 
 WebFont.load({
 	google: {
-		families: ['JetBrains Mono', 'Roboto'],
+		families: ['Roboto', 'Share Tech Mono'],
 	},
 })
 
@@ -30,8 +30,6 @@ export const GlobalStyles = createGlobalStyle`
     word-break: break-word;
     
     background: ${({ theme }) => theme.body};
-    
-    // transition: all 0.25s linear;
   }
   
   ul,
@@ -42,8 +40,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   h1 {
-    font-family: 'JetBrains Mono', sans-serif;
-    font-size: 30px;
+    font-family: 'Share Tech Mono', sans-serif;
+    font-size: 50px;
   }
   
   .App {
@@ -100,4 +98,26 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
+  
+  	@keyframes scaleIn {
+		from {
+			max-height: 106px;
+			opacity: 1;
+		}
+		to {
+			max-height: 0;
+			opacity: 0;
+		}
+	}
+
+	@keyframes scaleOut {
+		from {
+			max-height: 0;
+			opacity: 0;
+		}
+		to {
+			max-height: 106px;
+			opacity: 1;
+		}
+	}
 `
