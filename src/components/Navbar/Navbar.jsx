@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 	position: relative;
 
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 535px;
 `
 
 const Link = styled.a`

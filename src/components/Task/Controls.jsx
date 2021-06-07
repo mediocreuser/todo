@@ -36,10 +36,6 @@ const ControlsContainer = styled.div`
 	right: -9%;
 	transform: translateY(-50%);
 
-	@media (min-width: 576px) {
-		right: -9%;
-	}
-
 	@media (min-width: 768px) {
 		right: -35px;
 	}
