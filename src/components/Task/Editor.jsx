@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { changeTask } from '../../redux/reducer'
 import { useDispatch } from 'react-redux'
 
-const Editor = ({ setEditMode, id, text }) => {
+const Editor = ({ setEditMode, id, text, className }) => {
 	const dispatch = useDispatch()
 	const [value, setValue] = useState(text)
 
@@ -46,11 +46,9 @@ const Editor = ({ setEditMode, id, text }) => {
 	}
 
 	return (
-		<EditorContainer>
-			<form onSubmit={onSubmitForm}>
-				<input
-					type="text"
-					autoFocus
+		<div className={className}>
+			<Form onSubmit={onSubmitForm}>
+				<Input
 					value={value}
 					onChange={onChangeInput}
 					onKeyUp={onKeyUpInput}
@@ -59,15 +57,15 @@ const Editor = ({ setEditMode, id, text }) => {
 				<button disabled={doneDisabled}>
 					<span className="material-icons-round btn btn-done">done</span>
 				</button>
-			</form>
+			</Form>
 			<button onClick={onCancel} title="Esc">
 				<span className="material-icons-round btn btn-close">close</span>
 			</button>
-		</EditorContainer>
+		</div>
 	)
 }
 
-const EditorContainer = styled.div`
+export default styled(Editor)`
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -76,28 +74,15 @@ const EditorContainer = styled.div`
 	button:disabled .btn-done {
 		color: ${({ theme }) => theme.taskGray};
 	}
-
-	form {
-		display: flex;
-		align-items: center;
-		flex: 1;
-
-		input {
-			width: 100%;
-
-			margin-left: 33px;
-
-			font-family: inherit;
-			font-size: inherit;
-			color: inherit;
-
-			background-color: transparent;
-			border: none;
-
-			&:focus {
-				outline: none;
-			}
-		}
-	}
 `
-export default Editor
+
+const Form = styled.form`
+	display: flex;
+	align-items: center;
+	flex: 1;
+`
+
+const Input = styled.input.attrs({ type: 'text', autoFocus: true })`
+	width: 100%;
+	margin-left: 33px;
+`

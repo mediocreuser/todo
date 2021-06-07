@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Input from '../Input/Input'
+import Creator from '../Creator/Creator'
 import List from '../List/List'
 import CounterMessage from './CounterMessage'
 
@@ -15,7 +15,7 @@ const Main = () => {
 
 	return (
 		<main>
-			<Input count={count} provideCurrentValue={provideCurrentValue} />
+			<Creator count={count} provideCurrentValue={provideCurrentValue} />
 			<CounterMessage count={count} />
 			{!!count && <List tasks={tasks} value={inputValue} />}
 		</main>

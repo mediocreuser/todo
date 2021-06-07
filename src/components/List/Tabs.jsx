@@ -5,7 +5,7 @@ import { reverse, setTab } from '../../redux/reducer'
 
 import styled from 'styled-components'
 
-const Tabs = ({ activeTab, setActiveTab }) => {
+const Tabs = ({ activeTab, setActiveTab, className }) => {
 	const dispatch = useDispatch()
 
 	const onChangeCategory = (event) => {
@@ -14,7 +14,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 	}
 
 	return (
-		<TabsContainer>
+		<div className={className}>
 			<Button
 				onClick={onChangeCategory}
 				className={activeTab === 'All' ? 'active' : null}
@@ -33,14 +33,14 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 			>
 				Actual
 			</Button>
-			<Button className="reverse" onClick={() => dispatch(reverse())}>
+			<Reverse onClick={() => dispatch(reverse())}>
 				<span className="material-icons-round btn btn-reverse">import_export</span>
-			</Button>
-		</TabsContainer>
+			</Reverse>
+		</div>
 	)
 }
 
-const TabsContainer = styled.div`
+export default styled(Tabs)`
 	position: relative;
 
 	margin: 0 auto;
@@ -73,13 +73,11 @@ const Button = styled.button`
 	&.active:hover {
 		color: ${({ theme }) => theme.lightGreen};
 	}
-
-	&.reverse {
-		position: absolute;
-		bottom: -50%;
-		transform: translateY(-50%);
-		right: 0;
-	}
 `
 
-export default Tabs
+const Reverse = styled(Button)`
+	position: absolute;
+	bottom: -50%;
+	transform: translateY(-50%);
+	right: 0;
+`

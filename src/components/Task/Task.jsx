@@ -5,14 +5,15 @@ import Editor from './Editor'
 import Controls from './Controls'
 import Date from './Date'
 
+import classNames from 'classnames'
 import styled from 'styled-components'
 
-const Task = React.memo(({ task }) => {
+const Task = React.memo(({ task, className }) => {
 	const [editMode, setEditMode] = useState(false)
 
 	return (
-		<TaskContainer done={task.done} editMode={editMode}>
-			<Wrapper>
+		<li className={classNames(className, { done: task.done })}>
+			<Wrapper editMode={editMode}>
 				<Body>
 					{!editMode && (
 						<Content>
@@ -25,19 +26,17 @@ const Task = React.memo(({ task }) => {
 				<Date date={task.date} />
 			</Wrapper>
 			<Controls editMode={editMode} setEditMode={setEditMode} id={task.id} />
-		</TaskContainer>
+		</li>
 	)
 })
 
-const TaskContainer = styled.li`
+export default styled(Task)`
 	position: relative;
 
 	display: flex;
 	margin-bottom: 30px;
 
 	width: 90%;
-
-	color: ${(props) => (props.done ? ({ theme }) => theme.translucentText : 'inherit')};
 
 	@media (min-width: 576px) {
 		width: 100%;
@@ -47,6 +46,10 @@ const TaskContainer = styled.li`
 	@media (min-width: 768px) {
 		width: 100%;
 		max-width: 535px;
+	}
+
+	&.done {
+		color: ${({ theme }) => theme.translucentText};
 	}
 `
 
@@ -77,5 +80,3 @@ const Content = styled.div`
 	align-items: center;
 	text-align: left;
 `
-
-export default Task

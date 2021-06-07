@@ -1,30 +1,36 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 
-const Header = () => {
+import classNames from 'classnames'
+import styled from 'styled-components'
+
+const Header = ({ className }) => {
 	const count = useSelector(({ count }) => count)
 
 	return (
-		<HeaderContainer count={count}>
+		<div
+			className={classNames(className, {
+				haveTasks: !count,
+				noTasks: count,
+			})}
+		>
 			<Title>Todo App</Title>
 			<div>
-				Write, review and manage your <span>tasks</span>.
+				Write, review and manage your <Span>tasks</Span>.
 			</div>
-		</HeaderContainer>
+		</div>
 	)
 }
 
-const HeaderContainer = styled.header`
+export default styled(Header)`
 	overflow: hidden;
 
-	${({ count }) =>
-		!count
-			? `animation: scaleOut 0.5s ease-out forwards;`
-			: `animation: scaleIn 0.5s ease-out forwards;`}
+	&.haveTasks {
+		animation: scaleOut 0.5s ease-out forwards;
+	}
 
-	span {
-		color: ${({ theme }) => theme.lightGreen};
+	&.noTasks {
+		animation: scaleIn 0.5s ease-out forwards;
 	}
 `
 
@@ -35,4 +41,6 @@ const Title = styled.h1`
 	font-size: 50px;
 `
 
-export default Header
+const Span = styled.span`
+	color: ${({ theme }) => theme.lightGreen};
+`

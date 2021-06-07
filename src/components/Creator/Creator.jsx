@@ -4,7 +4,7 @@ import { addTask } from '../../redux/reducer'
 
 import styled from 'styled-components'
 
-const Input = ({ count, provideCurrentValue }) => {
+const Creator = ({ count, provideCurrentValue, className }) => {
 	const dispatch = useDispatch()
 
 	const [value, setValue] = useState('')
@@ -30,30 +30,29 @@ const Input = ({ count, provideCurrentValue }) => {
 	}
 
 	return (
-		<InputContainer>
-			<FormContainer onSubmit={onAddTask}>
-				<input
-					type="text"
+		<div className={className}>
+			<Form onSubmit={onAddTask}>
+				<Input
 					value={value}
 					onChange={onInputChange}
 					placeholder={count ? 'Add new task or filter' : 'Write your first task'}
 				/>
-				<button disabled={disabled}>
+				<Add disabled={disabled}>
 					<span className="material-icons-round">arrow_right_alt</span>
-				</button>
-			</FormContainer>
-		</InputContainer>
+				</Add>
+			</Form>
+		</div>
 	)
 }
 
-const InputContainer = styled.div`
+export default styled(Creator)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding-top: 30px;
 `
 
-const FormContainer = styled.form`
+const Form = styled.form`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -64,38 +63,22 @@ const FormContainer = styled.form`
 
 	width: 100%;
 	max-width: 300px;
-
-	input {
-		width: 100%;
-
-		padding: 10px 0 10px 14px;
-		border: none;
-
-		font-family: inherit;
-		font-size: inherit;
-		color: inherit;
-
-		background: none;
-
-		&:focus {
-			outline: none;
-		}
-	}
-
-	button {
-		background: none;
-		border: none;
-		padding: 0 10px 0 0;
-
-		&:disabled span {
-			color: ${({ theme }) => theme.arrow};
-		}
-
-		span {
-			color: ${({ theme }) => theme.lightGreen};
-			transition: color 0.5s;
-		}
-	}
 `
 
-export default Input
+const Input = styled.input.attrs({ type: 'text' })`
+	width: 100%;
+	padding: 10px 0 10px 14px;
+`
+
+const Add = styled.button`
+	padding: 0 10px 0 0;
+
+	&:disabled span {
+		color: ${({ theme }) => theme.arrow};
+	}
+
+	span {
+		color: ${({ theme }) => theme.lightGreen};
+		transition: color 0.5s;
+	}
+`

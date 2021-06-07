@@ -1,9 +1,9 @@
-import styled from 'styled-components'
 import React from 'react'
+import styled from 'styled-components'
 
-const CounterMessage = ({ count }) => {
+const CounterMessage = ({ count, className }) => {
 	return (
-		<CounterMessageContainer>
+		<div className={className}>
 			{count === 0 ? (
 				<div>You don't have tasks yet.</div>
 			) : count === 1 ? (
@@ -15,11 +15,11 @@ const CounterMessage = ({ count }) => {
 					You have <Count>{count}</Count> tasks
 				</div>
 			)}
-		</CounterMessageContainer>
+		</div>
 	)
 }
 
-const CounterMessageContainer = styled.div`
+export default styled(CounterMessage)`
 	position: relative;
 	padding: 20px 0;
 
@@ -57,5 +57,3 @@ const CounterMessageContainer = styled.div`
 const Count = styled.span`
 	color: ${({ theme }) => theme.lightGreen};
 `
-
-export default CounterMessage

@@ -4,7 +4,7 @@ import WebFont from 'webfontloader'
 
 WebFont.load({
 	google: {
-		families: ['Roboto', 'Share Tech Mono'],
+		families: ['Roboto', 'Share Tech Mono', 'Material Icons', 'Material Icons Round'],
 	},
 })
 
@@ -39,14 +39,27 @@ export const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
   
-  	button {
-		background: none;
-		border: none;
-		padding: 0;
-		cursor: pointer;
-				font-family: inherit;
-		font-size: inherit;
-		color: inherit;
+  input {
+  	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+  
+    background: none;
+    border: none;
+    
+    &:focus {
+		  outline: none;
+	  }
+  }
+  
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+        font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 	}
   
   .btn {
