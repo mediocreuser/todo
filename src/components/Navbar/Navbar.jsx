@@ -4,9 +4,9 @@ import Toggle from '../Toggle/Toggle'
 import { ReactComponent as GithubLogo } from '../../assets/images/github-mark.svg'
 import styled from 'styled-components'
 
-const Navbar = () => {
+const Navbar = ({ className }) => {
 	return (
-		<Container>
+		<div className={className}>
 			<Wrapper>
 				<Link
 					href="https://github.com/mediocreuser/todo"
@@ -17,13 +17,11 @@ const Navbar = () => {
 				</Link>
 				<Toggle />
 			</Wrapper>
-		</Container>
+		</div>
 	)
 }
 
-export default Navbar
-
-const Container = styled.div`
+export default styled(Navbar)`
 	width: 100%;
 	padding: 15px;
 	background: ${({ theme }) => theme.nav};

@@ -1,27 +1,66 @@
 import React from 'react'
-import { setTheme } from '../../redux/reducer'
+
 import { useDispatch, useSelector } from 'react-redux'
+import { setTheme } from '../../redux/reducer'
+
+import withStyles from '@material-ui/core/styles/withStyles'
+import Switch from '@material-ui/core/Switch'
 
 import styled from 'styled-components'
 
-const Toggle = () => {
+const Toggle = ({ className }) => {
 	const dispatch = useDispatch()
 	const theme = useSelector(({ theme }) => theme)
 
-	const toggleTheme = () => dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
+	const [checked, setChecked] = React.useState(theme === 'dark')
 
-	return <Button onClick={toggleTheme}>{theme}</Button>
+	const handleChange = (event) => {
+		setChecked(event.target.checked)
+		dispatch(setTheme(checked ? 'light' : 'dark'))
+	}
+
+	return (
+		<div className={className}>
+			<span className="material-icons-round">light_mode</span>
+
+			<GreenSwitch
+				checked={checked}
+				onChange={handleChange}
+				inputProps={{ 'aria-label': 'primary checkbox' }}
+			/>
+			<span className="material-icons-round">nightlight_round</span>
+		</div>
+	)
 }
 
-const Button = styled.button`
+export default styled(Toggle)`
 	position: absolute;
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
 
-	background: ${({ theme }) => theme.gradient};
-	border-radius: 5px;
-	cursor: pointer;
+	display: flex;
+	align-items: center;
+	color: #cdd9e5;
+
+	span {
+		font-size: 22px;
+	}
 `
 
-export default Toggle
+const GreenSwitch = withStyles({
+	switchBase: {
+		color: '#cdd9e5',
+		'&$checked': {
+			color: '#3fb950',
+			'&:hover': {
+				backgroundColor: 'rgba(63,185,80,0.05)',
+			},
+		},
+		'&$checked + $track': {
+			backgroundColor: '#3fb950',
+		},
+	},
+	checked: {},
+	track: {},
+})(Switch)
