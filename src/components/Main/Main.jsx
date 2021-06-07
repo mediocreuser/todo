@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Creator from '../Creator/Creator'
-import List from '../List/List'
 import CounterMessage from './CounterMessage'
+import Creator from './Creator'
+import List from './List/List'
 
 const Main = () => {
 	const count = useSelector(({ count }) => count)

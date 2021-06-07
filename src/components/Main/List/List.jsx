@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import Tabs from './Tabs'
-import Task from '../Task/Task'
+import Task from '../../Task/Task'
 
 import styled from 'styled-components'
 

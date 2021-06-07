@@ -1,7 +1,8 @@
 import React from 'react'
-import Toggle from '../Toggle/Toggle'
 
 import { ReactComponent as GithubLogo } from '../../assets/images/github-mark.svg'
+import Toggle from './Toggle'
+
 import styled from 'styled-components'
 
 const Navbar = ({ className }) => {
