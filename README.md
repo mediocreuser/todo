@@ -1,60 +1,28 @@
-# Todo List App
+<h1 align="center">
+  React To Do App
+</h1>
 
-![Application Sample](../assets/1.png?raw=true)
+<div align="center">
+  <p>A simple todo list application built with React, Redux and Styled components</p>
+  <p>The <a href="https://mediocreuser.github.io/todo/"><b>Demo</b></a> uses the <em>sessionStorage</em> to save data</p>
+  
 
-# Getting Started with Create React App
+  <p>
+      <img alt=screenshot" src="../assets/Screenshot_1.png?raw=true">
+      <img alt=screenshot" src="../assets/Screenshot_2.png?raw=true">
+  </p>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- - -
 
-## Available Scripts
+### Summary
 
-In the project directory, you can run:
+Todo App is a simple application created using React, React Hooks, Redux and Styled components. Implemented the ability to create and filter tasks in one field, view the current or already completed. You can also change, delete or mark them as completed.
 
-### `yarn start`
+### Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repository and `cd` into its root directory
+2. Run `yarn install` to install dependencies
+3. Run `yarn start` from the project directory to run in development mode
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application is served at [http://localhost:3000](http://localhost:3000) by default.
