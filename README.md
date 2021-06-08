@@ -1,6 +1,6 @@
-<a><img src="../assets/1.png?raw=true" /><a/>
+# Todo List App
 
-![Demo](../assets/1.png?raw=true)
+![Application Sample](../assets/1.png?raw=true)
 
 # Getting Started with Create React App
 
