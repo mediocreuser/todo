@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { removeTask } from '../../redux/reducer'
+import { removeTask } from '../../redux/redux'
 
 import styled from 'styled-components'
 
@@ -13,7 +13,7 @@ const Controls = ({ setEditMode, id, editMode }) => {
 			<button onClick={() => setEditMode(true)}>
 				<span className="material-icons btn btn-edit">edit_note</span>
 			</button>
-			<button onClick={() => dispatch(removeTask(id))}>
+			<button onClick={() => dispatch(removeTask({ id }))}>
 				<span className="material-icons btn btn-delete">delete_outline</span>
 			</button>
 		</ControlsContainer>

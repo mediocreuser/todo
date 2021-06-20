@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { reverse, setTab } from '../../../redux/reducer'
+import { reverse, setTab } from '../../../redux/redux'
 
 import styled from 'styled-components'
 

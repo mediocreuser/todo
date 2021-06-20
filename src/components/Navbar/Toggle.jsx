@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setTheme } from '../../redux/reducer'
+import { toggle } from '../../redux/redux'
 
 import withStyles from '@material-ui/core/styles/withStyles'
 import Switch from '@material-ui/core/Switch'
@@ -16,7 +16,7 @@ const Toggle = ({ className }) => {
 
 	const handleChange = (event) => {
 		setChecked(event.target.checked)
-		dispatch(setTheme(checked ? 'light' : 'dark'))
+		dispatch(toggle(checked ? 'light' : 'dark'))
 	}
 
 	return (

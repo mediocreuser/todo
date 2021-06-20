@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import styled from 'styled-components'
-import { changeTask } from '../../redux/reducer'
+import { changeTask } from '../../redux/redux'
 import { useDispatch } from 'react-redux'
 
 const Editor = ({ setEditMode, id, text, className }) => {
@@ -32,7 +32,7 @@ const Editor = ({ setEditMode, id, text, className }) => {
 		const text = event.target.value
 
 		if (text.length !== 0) {
-			dispatch(changeTask(value, id))
+			dispatch(changeTask({ value, id }))
 			setValue(text)
 		}
 

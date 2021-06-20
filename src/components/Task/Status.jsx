@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { changeTaskStatus } from '../../redux/reducer'
+import { changeTaskStatus } from '../../redux/redux'
 
 import styled from 'styled-components'
 
@@ -10,7 +10,7 @@ const Status = ({ id, completed }) => {
 
 	const onKeyPressLabel = (event) => {
 		if (event.code === 'Space' || event.code === 'Enter') {
-			dispatch(changeTaskStatus(id))
+			dispatch(changeTaskStatus({ id }))
 		}
 	}
 
@@ -25,7 +25,7 @@ const Status = ({ id, completed }) => {
 				<input
 					type="checkbox"
 					checked={completed}
-					onChange={() => dispatch(changeTaskStatus(id))}
+					onChange={() => dispatch(changeTaskStatus({ id }))}
 				/>
 			</label>
 		</StatusContainer>
