@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-  <p>A simple todo list application built with React, Redux and Styled components</p>
+  <p>A simple todo list application built with React, Redux, Redux Toolkit and Styled components</p>
   <p>The <a href="https://mediocreuser.github.io/todo/"><b>Demo</b></a> uses the <em>sessionStorage</em> to save data</p>
   
 
@@ -17,7 +17,7 @@
 
 ### Summary
 
-Todo App is a simple application created using React, React Hooks, Redux and Styled components. Implemented the ability to create and filter tasks in one field, view the current or already completed. You can also change, delete or mark them as completed.
+Todo App is a simple application created using React, React Hooks, Redux, Redux Toolkit and Styled components. Implemented the ability to create and filter tasks in one field, view the current or already completed. You can also change, delete or mark them as completed.
 
 ### Getting Started
 
